@@ -58,6 +58,35 @@ function addMember() {
     ])
 }
 
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your engineer's name?",
+            name: "engineerName"
+        },
+        {
+            type: "input",
+            message: "Enter your enginner's ID number.",
+            name: "engineerId"
+        },
+        {
+            type: "input",
+            message: "Enter your engineer's email address.",
+            name: "engineerEmail"
+        },
+        {
+            type: "input",
+            message: "Enter your engineer's GitHub username.",
+            name: "github"
+        }
+    ]).then(response => {
+        const newEngineer = new Engineer(response.engineerName, response.engineerId, response.engineerEmail, response.github);
+        team.push(newEngineer);
+        addMember();
+    })
+}
+
 addManager();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
